@@ -97,7 +97,7 @@ Enter the end date of your search (DD-MM-YYYY): 30-12-2024
 ## G2
 ```
 Enter the website you want to search (1 = G2, 2 = Capterra): 1
-Enter the product you want to search: chatgpt
+Enter the product you want to search: bitly
 Enter the start date of your search (DD-MM-YYYY): 01-09-2025
 Enter the end date of your search (DD-MM-YYYY): 30-09-2025
 ```
@@ -110,59 +110,12 @@ Enter the end date of your search (DD-MM-YYYY): 30-09-2025
     "date": "2025-09-11",
     "reviewer": "Pratik P."
   },
-  {
-    "title": "Bitly’s Powerful Link Management & Analytics Boosting My Website Traffic Strategy",
-    "rating": 4.5,
-    "date": "2025-07-04",
-    "reviewer": "Omkar P."
-  },
-  {
-    "title": "Simple and Reliable Link Management Tool",
-    "rating": 4.0,
-    "date": "2025-07-29",
-    "reviewer": "Akhil J."
-  },
+
   {
     "title": "New management not off to a good start",
     "rating": 0.0,
     "date": "2025-09-16",
     "reviewer": "Verified User in Consumer Electronics"
-  },
-  {
-    "title": "The Site that Set the Standard",
-    "rating": 3.5,
-    "date": "2025-06-05",
-    "reviewer": "Ryan S."
-  },
-  {
-    "title": "Optimal management of our digital campaigns and great management of URLs",
-    "rating": 4.5,
-    "date": "2025-05-26",
-    "reviewer": "Yevhen H."
-  },
-  {
-    "title": "Best non-spam URL shortner",
-    "rating": 5.0,
-    "date": "2025-08-06",
-    "reviewer": "Ankit D."
-  },
-  {
-    "title": "A classic service with excellent features for precision social media and engagement tracking",
-    "rating": 4.0,
-    "date": "2025-07-29",
-    "reviewer": "Verified User in Information Technology and Services"
-  },
-  {
-    "title": "Bitly - The best link shortening & customize link tool",
-    "rating": 4.5,
-    "date": "2025-06-04",
-    "reviewer": "Shalom F."
-  },
-  {
-    "title": "I've been using Bitly since years and I can say its a very good product for link shortening.",
-    "rating": 4.5,
-    "date": "2025-07-30",
-    "reviewer": "Riyansh S."
   }
 ]
 ```
