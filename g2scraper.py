@@ -72,21 +72,24 @@ class G2Scraper:
     def search_product(self, query):
         encoded_query = quote(query)
         url = f"https://www.g2.com/search?utf8=%E2%9C%93&query={encoded_query}"
-        session = self.create_session()
+        # session = self.create_session()
         try:
-            response = session.get(url, timeout=15)
-            response.raise_for_status()
-            if response:
-                soup = BeautifulSoup(response.content, 'lxml')
-                a = soup.find('a',
-                              class_='elv-w-fit elv-font-figtree elv-font-normal elv-tracking-normal focus-visible:elv-outline focus-visible:elv-outline-4 focus-visible:elv-outline-offset-0 focus-visible:elv-outline-purple-40 elv-text-base elv-leading-6 focus-visible:elv-rounded-sm elv-text-link active:elv-text-link-hover focus:elv-text-link-hover hover:elv-text-link-hover visited:elv-text-link-visited js-log-click')
-                if a:
-                    href = a.get('href')
-                    img = a.find('img')
-                    name = img.get('alt') if img else None
-                    return name, href, url
-                else:
-                    print("Link not found")
+            with Camoufox(headless=False) as browser:
+                page = browser.new_page()
+                page.goto(url)
+                time.sleep(10)
+                if page.content():
+                    soup = BeautifulSoup(page.content(), 'lxml')
+                    print(soup.prettify())
+                    a = soup.find('a',
+                                  class_='elv-w-fit elv-font-figtree elv-font-normal elv-tracking-normal focus-visible:elv-outline focus-visible:elv-outline-4 focus-visible:elv-outline-offset-0 focus-visible:elv-outline-purple-40 elv-text-base elv-leading-6 focus-visible:elv-rounded-sm elv-text-link active:elv-text-link-hover focus:elv-text-link-hover hover:elv-text-link-hover visited:elv-text-link-visited js-log-click')
+                    if a:
+                        href = a.get('href')
+                        img = a.find('img')
+                        name = img.get('alt') if img else None
+                        return name, href, url
+                    else:
+                        print("Link not found")
         except requests.exceptions.RequestException as e:
             print(f"An error occurred during search: {e}")
             return None, None, None
