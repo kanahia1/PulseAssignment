@@ -119,5 +119,25 @@ Enter the end date of your search (DD-MM-YYYY): 30-09-2025
   }
 ]
 ```
+
+## Sourceforge usage (under construction)
+```
+Enter the website you want to search (1 = G2, 2 = Capterra, 3 = SourceForge): 3
+Enter the product you want to search: bitly
+Enter the start date of your search (DD-MM-YYYY): 01-01-2022
+Enter the end date of your search (DD-MM-YYYY): 01-12-2023
+```
+**Output**
+```
+[
+  {
+    "title": "\"Make Sure Your Brand is Being Seen\"",
+    "description": "Pros: I help with the branding of our company and Bitly makes it so easy for us to track the posts that are being put up each week about our company on different platforms. Bitly helps me to see what posts/platforms are working for us and others that aren't. I also love how it helps keeps track of all the posts my team and I are making.\nCons: I wouldn't say it is the most user friendly to use. It took me a bit to get use to all of the features.\nOverall: Even though it took me a little bit to get the software down, overall I would strongly suggest using the platform as it is an easy way to keep track of all of your social posts for your company.\nRead More...",
+    "rating": 0,
+    "date": "2022-07-30",
+    "reviewer": "A Bitly User"
+  }
+]
+```
 ## Email
 kaushalkanahia@gmail.com
