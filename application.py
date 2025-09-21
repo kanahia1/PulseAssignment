@@ -3,14 +3,18 @@ from data_converter import DataConverter
 from g2scraper import G2Scraper
 from datetime import datetime
 
+from sfscraper import SFScraper
+
+
 class Application:
     """Main application class to run the scraper."""
 
     def runG2Scraper(self, user_query, start_date, end_date):
         try:
             scraper = G2Scraper()
-            product_name, product_url, pre_url = scraper.search_product(user_query)
-
+            # product_name, product_url, pre_url = scraper.search_product(user_query)
+            product_name = 'ChatGPT'
+            product_url = 'https://www.g2.com/products/chatgpt/reviews'
             if product_url:
                 print(f"Found product: '{product_name}'. Fetching reviews from: {product_url}")
                 number_of_reviews, articles = scraper.get_reviews(product_url, start_date, end_date)
@@ -49,10 +53,30 @@ class Application:
         except Exception as e:
             print(f"An unexpected error occurred: {e}")
 
+    def runSourceForgeScrapper(self, user_query, start_date, end_date):
+        try:
+            scraper = SFScraper()
+            product_url = scraper.search_product(user_query)
+            if product_url:
+                name, number_of_reviews, articles = scraper.get_reviews(product_url, start_date, end_date)
+                if articles:
+                    json_output = DataConverter.to_json(articles)
+                    print("\n--- Scraped Reviews (JSON) ---")
+                    print(json_output)
+                else:
+                    print("Finished with no reviews to display.")
+            else:
+                print(f"Could not find any products matching '{user_query}'.")
+
+        except KeyboardInterrupt:
+            print("\nOperation cancelled by user.")
+        except Exception as e:
+            print(f"An unexpected error occurred: {e}")
+
 
 if __name__ == "__main__":
     app = Application()
-    search_engine = input("Enter the website you want to search (1 = G2, 2 = Capterra): ").strip()
+    search_engine = input("Enter the website you want to search (1 = G2, 2 = Capterra, 3 = SourceForge): ").strip()
     user_query = input("Enter the product you want to search: ").strip()
     start_date = input("Enter the start date of your search (DD-MM-YYYY): ").strip()
     end_date = input("Enter the end date of your search (DD-MM-YYYY): ").strip()
@@ -62,7 +86,7 @@ if __name__ == "__main__":
     else:
         try:
             search_engine = int(search_engine)
-            if search_engine not in [1, 2]:
+            if search_engine not in [1, 2, 3]:
                 print("No engine found")
             else:
                 try:
@@ -74,8 +98,10 @@ if __name__ == "__main__":
                     else:
                         if search_engine == 1:
                             app.runG2Scraper(user_query, start_date, end_date)
-                        else:
+                        if search_engine == 2:
                             app.runCapterraScrapper(user_query, start_date, end_date)
+                        else:
+                            app.runSourceForgeScrapper(user_query, start_date, end_date)
                 except ValueError as e:
                     print(f"Invalid date format. Please use DD-MM-YYYY format. Error: {e}")
 
