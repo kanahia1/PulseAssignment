@@ -9,7 +9,7 @@ class Application:
     def runG2Scraper(self, user_query, start_date, end_date):
         try:
             scraper = G2Scraper()
-            product_name, product_url = scraper.search_product(user_query)
+            product_name, product_url, pre_url = scraper.search_product(user_query)
 
             if product_url:
                 print(f"Found product: '{product_name}'. Fetching reviews from: {product_url}")
